@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+double pow(double y, unsigned int z);
+int main(){
+double y; unsigned int z;
+cout « " Enter number: " « endl;
+cin » y;
+cout « " Enter power: " « endl;
+cin » z;
+cout « pow(y, z) « endl;
+return 0;
+}
+double pow(double y, unsigned int z){
+int t;
+if (z == 0){
+t = 1;
+} else {
+if (z == 1){
+t = y;
+} else {
+if (z % 2 == 0){
+t = pow(y * y, z - 1);
+} else {
+t = y * pow(y, z - 1);
+}
+}
+}
+return t;
+}
