@@ -1,0 +1,103 @@
+#include <iostream>
+
+using namespace std;
+class stroka
+{
+public:
+    char *value;
+    int a;
+    stroka()//конструктор
+    {
+        char c;
+        cout << "введите длину строки: ";
+        cin >> this->a;
+        this->value = new char[a+1];
+        for(int i = 0;i < a;i++)
+        {
+            cin >> this->value[i];
+        }
+        this->value[this->a] = '\0';
+    };
+    int strlen() {
+        return a;
+    }
+    char get(int b)
+    {
+        return value[b+1];
+    }
+    void set(int i, char r)
+    {
+        this->value[i] = r;
+        return;
+    }
+    void slozenie(string s)
+    {
+        int i = 0;
+        while (s[i]!= '\0')
+            i++;
+        char *a = new char [this->a +i+1];
+        for (int y = 0;y < this->a ; y++)
+            a[y] = this->value[y];
+        for (int y = 0;y < i;y++)
+            a[this->a +y] = s[y];
+        a[this->a + i] = '\0';
+        this->value = a;
+        this->a += i;
+        return;
+    }
+    int search(string e)
+    {
+        int a = 0,b;
+        while ( e[a] != '\0')
+        a++;
+        for (int i = 0;i < this->a + 1 - a;i++)
+        {
+            b = 0;
+            for(int j=0;j<a;j++)
+            {
+                if (this->value[i+j]!=e[j])
+                    b = 1;
+            }
+            if (b == 0)
+                return i;
+        }
+        return -1;
+    }
+    string podstroka(int a,int b)
+    {
+       char *d = new char[b-a+1];
+        for (int i = 0 ; i < b-a+1 ; i++)
+            d[i] = this->value[a + i];
+        return d;
+    }
+    ~stroka()
+    {
+        cout << "строка  была удалена\n" ;
+    }
+};
+int main()
+{
+    int d,e,f;
+    setlocale (0,"RUS");
+    stroka v;
+    cout  << v.value << endl;
+    cout << "длина вашей строки: " << v.strlen() << endl;
+    cout << "введите номер символа,который хотите получить: " << endl;
+    cin >> b;
+    cout << v.get(b) << endl;
+    cout << "на что вы хотите заменить данный символ : " << endl;
+    cin >> r;
+    v.set(b,r);
+    cout << "наличие какой строки вы хотите проверить : " << endl;
+    cin >> e;
+    cout << v.search(e) << endl;
+    cout << "c какого символа вы хотите получить строку : " << endl;
+    cin d;
+    cout << "до какого символа вы хотите получить строку : " << endl;
+    cin e;
+    cout << v.podstroka(d,e)<< endl;
+    v.slozenie("wer ");
+    cout  << v.value << endl;
+    cout << v.a << endl;
+    return 0;
+}
