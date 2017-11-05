@@ -23,12 +23,12 @@ public:
     }
     char get(int b)
     {
-        return value[b+1];
+        return value[b-1];
     }
     void set(int i, char r)
     {
         this->value[i] = r;
-        return;
+        return ;
     }
     void slozenie(string s)
     {
@@ -77,7 +77,9 @@ public:
 };
 int main()
 {
-    int d,e,f;
+    int d,f,b,j,o;
+    char r;
+    string e;
     setlocale (0,"RUS");
     stroka v;
     cout  << v.value << endl;
@@ -92,10 +94,10 @@ int main()
     cin >> e;
     cout << v.search(e) << endl;
     cout << "c какого символа вы хотите получить строку : " << endl;
-    cin d;
+    cin >> o;
     cout << "до какого символа вы хотите получить строку : " << endl;
-    cin e;
-    cout << v.podstroka(d,e)<< endl;
+    cin >> j;
+    cout << v.podstroka(o,j)<< endl;
     v.slozenie("wer ");
     cout  << v.value << endl;
     cout << v.a << endl;
